@@ -27,7 +27,8 @@ class TestPasswordRecovery:
         forgot_password = ForgotPasswordPage(driver)
         forgot_password.enter_reed_forgot_password_email('zcx')
         forgot_password.click_recover_password()
-        url = forgot_password.current_url()
+        # forgot_password.enter_password()
+        url = driver.current_url
         assert url == f'{BASE_URL}{RESET_PASSWORD}'
 
 

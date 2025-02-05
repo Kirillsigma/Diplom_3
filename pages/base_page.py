@@ -21,11 +21,11 @@ class BasePage:
         self.driver.find_element(*locator).click()
 
     def current_url(self):
+        self.driver.implicitly_wait(2)
+        # self.driver.refresh()
         return self.driver.current_url
 
     def add_text(self, locator, text):
         self.driver.find_element(*locator).send_keys(text)
 
-    def time_sleep(self):
-        self.driver.implicitly_wait(10)
 

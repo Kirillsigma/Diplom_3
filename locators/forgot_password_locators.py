@@ -9,13 +9,13 @@ class ForgotPasswordLocators:
     SEARCH_RECOVER_PASSWORD = (By.XPATH, ".//*[text()='Восстановить']")
 
     # Глазочек в поле ввести пароль
-    SEARCH_FIELD_PASSWORD = (By.XPATH, '//*[@name="Введите новый пароль"]')
+    SEARCH_FIELD_PASSWORD = (By.XPATH, '//div[contains(@class, "input__icon input__icon-action")]')
 
-    # Проверка подсвеченного поля
-    SEARCH_FIELD_PASSWORD_ACTIVE = By.XPATH, "//div[contains(@class, 'input pr-6 pl-6 input_type_password input_size_default')]"
+    SET_NEW_PASSWORD = (By.XPATH,
+                        ".//input[@class='text input__textfield text_type_main-default' and @type= 'password']")
+
 
     PASSWORD_FIELD_PARENT = (By.XPATH, ".//input[contains(@type,'text')]/parent::div")
-
 
     # Подсвеченное поле пароля
     HIGHLIGHTED_PASSWORD_FIELD = (

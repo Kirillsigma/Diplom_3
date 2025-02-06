@@ -1,6 +1,8 @@
-
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.action_chains import ActionChains
+from seletools.actions import drag_and_drop
 
 from helpers.url import *
 
@@ -14,39 +16,62 @@ class BasePage:
     def go_to_site(self):
         self.driver.get(self.url)
 
+    # ожидание на то что элемент есть
+    def find_element(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.presence_of_element_located(locator))
 
-    def find_element_with(self, locator):
-        return WebDriverWait(self.driver, 5).until(expected_conditions.presence_of_element_located(locator))
+    # найтивсех эелементы
+    def find_all_elements(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.presence_of_all_elements_located(locator))
 
-    # Найти элемент
-    def find_element_with_wait(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
-        return self.driver.find_element(*locator)
 
-    # Клик по элемменту
+
+    # ожидание на то что элемент виден
+    def find_element_visual(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(locator))
+
+    # ожидание на то что элемент не виден
+    def find_element_invisual(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.invisibility_of_element_located(locator))
+
+    # Клик по элементу
     def click_to_element(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(locator))
-        self.driver.find_element(*locator).click()
+        element = self.find_element_visual(locator)
+        element.click()
+
+    # Клик по текстовой кнопке
+    def click_text_button(self, locator):
+        element = self.find_element_visual(locator)
+        self.driver.execute_script("arguments[0].click();", element)
 
     # Достать url
     def current_url(self):
         return self.driver.current_url
 
+    # Проверка на кликабельность
+    def wait_element_clickable(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(locator))
+
     # Ввести текст
-    def add_text(self, locator, text):
-        self.driver.find_element(*locator).send_keys(text)
-
-    # Ожилание пока не появится элемент
-    def without_element_located(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
-
-
-    def without_element_clickable(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(locator))
+    def enter_text(self, locator, text):
+        element = self.wait_element_clickable(locator)
+        element.clear()
+        element.send_keys(text)
 
     # Прочитать текст на элементе
-    def text_button(self, locator):
-        return WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator)).text
+    def add_text(self, locator):
+        return WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(locator)).text
+
+    def wait_and_find_element(self, locator):
+        return self.driver.find_element(*locator)
+
+    # Перетаскивание элемента
+    def drag_and_drop(self, source_element, target_element):
+        # source_element = self.find_element(source_locator)
+        # target_element = self.find_element(target_locator)
+        # action = ActionChains(self.driver)
+        return drag_and_drop(self.driver, source_element, target_element)
+
 
 
 

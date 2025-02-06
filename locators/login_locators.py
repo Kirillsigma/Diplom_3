@@ -18,7 +18,11 @@ class LoginLocators:
     BUTTON_DESIGNER = (By.XPATH, "//*[contains(@class,'button_button__33qZ0') and text() = 'Оформить заказ']")
 
     # История заказов
-    HISTORY_ORDER = (By.XPATH, "//*[contains(@class,'Account_link__2ETsJ text') and text() = 'История заказов']")
+    HISTORY_ORDER = (By.XPATH, "//*[contains(@class,'Account_link__2ETsJ text text_type_main-medium') and text() = 'История заказов']")
 
     # Кнопка выйти из аккаунта
     EXIT_ACCOUNT = (By.XPATH, "//*[contains(@class,'Account_button__14Yp3 text') and text() = 'Выход']")
+
+    # Локатор id заказа
+    ID_ORDER = (By.XPATH, "//*[contains(@class,'text text_type_digits-default')]")
+

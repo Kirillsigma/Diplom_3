@@ -1,3 +1,5 @@
+import time
+
 import allure
 
 from pages.main_page import MainPage
@@ -18,7 +20,6 @@ class TestPasswordRecovery:
         login_page.entering_a_password()
         login_page.click_button_entrance()
         login_page.without_element_order()
-        button = main_page.button_place()
         assert main_page.button_place() == 'Оформить заказ'
 
     @allure.title('Переход на вкладку история заказов')
@@ -30,7 +31,7 @@ class TestPasswordRecovery:
         login_page.entering_a_email()
         login_page.entering_a_password()
         login_page.click_button_entrance()
-        main_page.without_button_clickable()
+        login_page.without_element_order()
         main_page.click_personal_account()
         login_page.click_history_order()
         assert driver.current_url == f'{BASE_URL}{ORDER_HISTORY}'

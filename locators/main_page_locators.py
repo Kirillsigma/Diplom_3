@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
 
     # Найти кнопку личный кабинет
-    SEARCH_PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//*[contains(@class, 'AppHeader_header__linkText') and text() = 'Личный Кабинет']")
+    SEARCH_PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//*[contains(@class, 'AppHeader_header__link__3D_hX') and contains(@href, '/account')]")
 
     # Найти кнопку Оформить заказ/войти в аккаунт
     BUTTON_PLACE_ORDER =  (By.XPATH, "//*[contains(@class, 'button_button__33qZ0')]")

@@ -40,6 +40,10 @@ class BasePage:
     def without_element_located(self, locator):
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
 
+
+    def without_element_clickable(self, locator):
+        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(locator))
+
     # Прочитать текст на элементе
     def text_button(self, locator):
         return WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator)).text

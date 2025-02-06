@@ -30,7 +30,7 @@ class TestPasswordRecovery:
         login_page.entering_a_email()
         login_page.entering_a_password()
         login_page.click_button_entrance()
-        login_page.without_element_order()
+        main_page.without_button_clickable()
         main_page.click_personal_account()
         login_page.click_history_order()
         assert driver.current_url == f'{BASE_URL}{ORDER_HISTORY}'

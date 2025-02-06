@@ -1,14 +1,16 @@
 import allure
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
-from tests.conftest import driver
 
 
+@allure.title("Главная страница")
 class MainPage(BasePage):
 
     @allure.step("Клик по кнопке личный кабинет")
     def click_personal_account(self):
         self.click_to_element(MainPageLocators.SEARCH_PERSONAL_ACCOUNT_BUTTON)
+
+    @allure.step("Прочитать что написано на кнопке на главном экране")
+    def button_place(self):
+        return self.text_button(MainPageLocators.BUTTON_PLACE_ORDER)

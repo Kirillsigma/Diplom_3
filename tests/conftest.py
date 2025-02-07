@@ -1,6 +1,5 @@
 import pytest
 from selenium import webdriver
-from helpers.data import DRIVER_NAME
 
 
 @pytest.fixture(params=['chrome', 'firefox'])

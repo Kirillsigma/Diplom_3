@@ -1,5 +1,3 @@
-from math import trunc
-
 import allure
 
 from pages.base_page import BasePage
@@ -48,7 +46,6 @@ class MainPage(BasePage):
     def drag_and_drop_main(self):
         source_element = self.wait_and_find_element(MainPageLocators.BUTTON_BULKA)
         target_element = self.wait_and_find_element(MainPageLocators.FIELD_BULKA)
-        # self.drag_and_drop(MainPageLocators.BUTTON_BULKA , MainPageLocators.FIELD_BULKA)
         self.drag_and_drop(source_element, target_element)
 
     @allure.step("Прочитать заначение каунтера")

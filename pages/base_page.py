@@ -1,7 +1,5 @@
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
 from seletools.actions import drag_and_drop
 
 from helpers.url import *
@@ -67,9 +65,6 @@ class BasePage:
 
     # Перетаскивание элемента
     def drag_and_drop(self, source_element, target_element):
-        # source_element = self.find_element(source_locator)
-        # target_element = self.find_element(target_locator)
-        # action = ActionChains(self.driver)
         return drag_and_drop(self.driver, source_element, target_element)
 
 

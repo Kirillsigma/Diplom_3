@@ -1,5 +1,3 @@
-from math import trunc
-
 import allure
 
 from pages.base_page import BasePage
